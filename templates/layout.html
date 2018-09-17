@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KudiTracker</title>
+        <link rel='stylesheet' type='text/css' href="{{url_for('static',filename='css/main.css')}}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+    </head>
+    <body>
+      <div class="ui static inverted menu">
+        <div class="ui container">
+          <div class="header item"><i class="calculator icon"></i>KudiTracker</div>
+          <a href="/" class="item">Home</a>
+          <a href="templates/business" class="item">Business</a>
+          <a href="templates/personal" class="item">Personal</a>
+        </div>
+      </div>
+
+        {% block content %}
+        {% endblock %}
+      <!--
+      <div class="ui inverted vertical footer segment">
+        <div class="ui container">
+              Travel Match 2015. All Rights Reserved
+        </div>
+      </div>
+      -->
+    </body>
+</html>
