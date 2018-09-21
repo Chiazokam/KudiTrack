@@ -1,6 +1,6 @@
 # KudiTracker
 KudiTracker is an expense tracker that helps the user to keep track of his daily expenses.\
-The following data are provided by the user:\
+The following data are provided by the user:
 
 a. The date of the \
 b. The description of the expense\
@@ -20,8 +20,13 @@ c. From your command line, set up a virtual environment in the root folder and a
    i. Flask (pip install flask)\
    ii. Pymongo (pip install pymongo)\
 d. Move into the folder that was cloned and run the python Script\
+
+
+
     ```
+    
     > python main_app.py
+    
     ```
 
 
@@ -37,6 +42,6 @@ d. Move into the folder that was cloned and run the python Script\
 
 
 
-#How to run the project (on other machines)
-#How to run the automated tests
+#How to run the project (on other machines)\
+#How to run the automated tests\
 #Include link to Travis build
