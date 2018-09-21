@@ -2,7 +2,7 @@
 KudiTracker is an expense tracker that helps the user to keep track of his daily expenses.\
 The following data are provided by the user:
 
-a. The date of the \
+a. The date of the expense \
 b. The description of the expense\
 c. The amount\
 d. Category of expense -‘Business’ or ‘Personal’\
