@@ -1,4 +1,4 @@
-#KudiTracker
+# KudiTracker
 
 
 KudiTracker is an expense tracker that helps the user to keep track of his daily expenses.
