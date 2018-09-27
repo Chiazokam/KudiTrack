@@ -45,8 +45,11 @@ d. Move into the folder that was cloned and run the python Script
 
 ## Wireframes
 Home Page: https://user-images.githubusercontent.com/26940294/46139831-766b2500-c247-11e8-96f5-e0b07c9414d4.png
+
 Personal Page: https://user-images.githubusercontent.com/26940294/46139832-7703bb80-c247-11e8-89fb-480ab9a039f1.PNG
+
 Business Page: https://user-images.githubusercontent.com/26940294/46139827-7539f800-c247-11e8-85df-9a74cb96999c.PNG
+
 Show Page: https://user-images.githubusercontent.com/26940294/46139834-779c5200-c247-11e8-8140-0e52d1e3341f.PNG
 
 
