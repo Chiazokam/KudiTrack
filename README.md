@@ -9,8 +9,11 @@ The following data are provided by the user:
 a. The date of the expense
 
 b. The description of the expense
+
 c. The amount
+
 d. Category of expense - Business or Personal
+
 On submission, data are stored in the database and can be retrieved at any time based on categories.
 
 
@@ -23,6 +26,7 @@ a. Create a folder on your local machine and clone repo into it.
 
 b. Set up MongoDB on your local machine and keep it running in the background.\
     (Follow instructions in https://www.codecademy.com/articles/tdd-setup-mongodb-2 to set up mongodb if not installed on your local machine)
+    
 c. From your command line, set up a virtual environment in the root folder and activate it.
   Check out https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/
 
