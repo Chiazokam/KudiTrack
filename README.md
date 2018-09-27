@@ -43,6 +43,12 @@ d. Move into the folder that was cloned and run the python Script
 
     > python main_app.py
 
+e. On your browser, go to:
+    http://localhost:5000/
+
+... and you have KudiTracker running!
+
+
 
 ## Wireframes
 Home Page: https://user-images.githubusercontent.com/26940294/46139831-766b2500-c247-11e8-96f5-e0b07c9414d4.png
