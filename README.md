@@ -18,7 +18,7 @@ On submission, data are stored in the database and can be retrieved at any time 
 
 
 
-## Getting Started
+## Getting Started With KudiTracker
 
 
 a. Create a folder on your local machine and clone repo into it.
@@ -39,7 +39,6 @@ c. From your command line, set up a virtual environment in the root folder and a
 	ii. Pymongo (pip install pymongo)
 
 d. Move into the folder that was cloned and run the python Script
-
 
     > python main_app.py
 
@@ -48,6 +47,25 @@ e. On your browser, go to:
 
 ... and you have KudiTracker running!
 
+
+## Getting Started with the Hello World App
+
+a. Create a folder on your local machine
+
+b. Run:
+
+  git clone -b helloflask https://github.com/Chiazokam/KudiTracker
+
+in the created folder.
+
+c. Follow the instructions above to set up a virtual environment on your system
+
+d. Follow instructions above to install flask in the app folder
+
+e. On your browser, go to:
+    http://localhost:5000/
+    
+...and the hello world app is set to run
 
 
 ## Wireframes
