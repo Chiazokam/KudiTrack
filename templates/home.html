@@ -1,36 +1,37 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<div class="ui main text container segment">
-  <div class="ui huge header"> KudiTracker </div>
+<div id="defined-content">
+  <div class="ui main text container segment">
+    <div class="ui huge header"> KudiTracker </div>
 
-  <form class="ui form" action="/expenses" method="POST">
-    <div class="field">
-      <label>Date</label>
-      <input type="date" name="expense_date" required></input>
-    </div>
+    <form class="ui form" action="/expenses" method="POST">
+      <div class="field">
+        <label>Date</label>
+        <input type="date" name="expense_date" required></input>
+      </div>
 
-    <div class="field">
-      <label>Expense Description</label>
-      <input type="text" name="expense_descr" required></input>
-    </div>
+      <div class="field">
+        <label>Expense Description</label>
+        <input type="text" name="expense_descr" required></input>
+      </div>
 
-    <div class="field">
-      <label>Amount Spent</label>
-      <input type="text" name="expense_amt" required></input>
-    </div>
+      <div class="field">
+        <label>Amount Spent</label>
+        <input type="text" name="expense_amt" required></input>
+      </div>
 
-    <div class="field">
-      <label>Select Expense Category</label>
-      <select name="category" required>
-          <option value=""="business_cat">Business</option>
-          <option value="personal_cat">Personal</option>
-        </select>
-    </div>
+      <div class="field">
+        <label>Select Expense Category</label>
+        <select name="category" required>
+            <option value=""="business_cat">Business</option>
+            <option value="personal_cat">Personal</option>
+          </select>
+      </div>
 
-    <button class="ui secondary button">Submit</button>
+      <button class="ui secondary button">Submit</button>
 
-  </form>
+    </form>
+  </div>
 </div>
-
 {% endblock %}

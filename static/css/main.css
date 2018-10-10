@@ -1,9 +1,17 @@
-i.icon{
-  font-size: 10em;
+#defined-body{
+  background-color: #ecf0f1;
 }
-container.main{
-  margin-top: 7.0em;
+
+#defined-content{
+  min-height: 70%;
+  min-height: -webkit-calc(100% - 186px);
+  min-height: -moz-calc(100% - 186px);
+  min-height: calc(100% - 186px);
+  padding-bottom: 7%;
+  padding-top: 3%;
 }
-body{
-  background-color: green;
+
+#footer-text{
+  margin-bottom: 0;
+  padding-left: 36%;
 }

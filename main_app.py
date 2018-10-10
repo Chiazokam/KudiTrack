@@ -1,26 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 import datetime
 import pymongo
 from pymongo import MongoClient # Database connector
 
 app = Flask(__name__)
-
-#==============================================================================
-#Create and connect to DB
-#==============================================================================
-client = MongoClient('localhost', 27017)    #Configure the connection to the database
-db = client.kuditracker    #Select the database
-
-#Insert dummy data
-expense = {
-           "date": datetime.datetime.now(),
-           "Description": "For house painting",
-           "amount": "N50000",
-           "category": "Personal"
-           }
-
-#expenses serves as the Collection
-db.expenses.insert_one(expense)
 
 #==============================================================================
 @app.route("/")
