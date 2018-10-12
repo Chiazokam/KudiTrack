@@ -2,13 +2,17 @@
   background-color: #ecf0f1;
 }
 
+#defined-item:hover{
+  background-color: #b71540;
+}
+
+#defined-descr{
+  text-align: center;
+}
+
 #defined-content{
-  min-height: 70%;
-  min-height: -webkit-calc(100% - 186px);
-  min-height: -moz-calc(100% - 186px);
-  min-height: calc(100% - 186px);
-  padding-bottom: 7%;
-  padding-top: 3%;
+ height: 85%;
+ overflow: scroll;
 }
 
 #footer-text{
