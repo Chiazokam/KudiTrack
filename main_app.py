@@ -1,7 +1,4 @@
 from flask import Flask, render_template, url_for
-import datetime
-import pymongo
-from pymongo import MongoClient # Database connector
 
 app = Flask(__name__)
 

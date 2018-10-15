@@ -2,7 +2,7 @@
   background-color: #ecf0f1;
 }
 
-#defined-item:hover{
+.defined-item:hover{
   background-color: #b71540;
 }
 
@@ -11,8 +11,9 @@
 }
 
 #defined-content{
- height: 85%;
- overflow: scroll;
+  padding-top: 5%;
+  height: 85%;
+  overflow: scroll;
 }
 
 #footer-text{
