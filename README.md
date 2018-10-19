@@ -24,9 +24,11 @@ On submission, data are stored in the database and can be retrieved at any time 
 a. Create a folder on your local machine and clone repo into it.
    This folder will act as the root folder for your virtual environment
 
-b. Set up MongoDB on your local machine and keep it running in the background.
+b. Set up MariaDB on your local machine and keep it running in the background.
 
-(Follow instructions in https://www.codecademy.com/articles/tdd-setup-mongodb-2 to set up mongodb if not installed on your local machine)
+(Follow instructions in https://mariadb.com/kb/en/library/installing-mariadb-msi-packages-on-windows/ and
+
+   https://mariadb.com/kb/en/library/a-mariadb-primer/ to set up mariaDB if not installed on your local machine)
 
 c. From your command line, set up a virtual environment in the root folder and activate it.
   Check out https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/
@@ -36,9 +38,16 @@ c. From your command line, set up a virtual environment in the root folder and a
 
   Install the following in your virtual environment:
 	i. Flask (pip install flask)
-	ii. Pymongo (pip install pymongo)
+	ii. mysql-connector (pip install mysql-connector)
+  iii. wtforms (pip install wtforms)
 
-d. Move into the folder that was cloned and run the python Script
+d. Move into the folder that was cloned
+
+      i. cd into Flask_Maria and run the db_create.py file
+
+    > python db_create.py
+
+      ii. Go back to the parent folder and run the main_app.py file
 
     > python main_app.py
 
@@ -64,7 +73,7 @@ d. Follow instructions above to install flask in the app folder
 
 e. On your browser, go to:
     http://localhost:5000/
-    
+
 ...and the hello world app is set to run
 
 
@@ -80,10 +89,6 @@ Personal Page:
 Business Page:
 
 ![](https://user-images.githubusercontent.com/26940294/46139827-7539f800-c247-11e8-85df-9a74cb96999c.PNG)
-
-Show Page:
-
- ![](https://user-images.githubusercontent.com/26940294/46139834-779c5200-c247-11e8-8140-0e52d1e3341f.PNG)
 
 
 ### Technologies and Frameworks Used
