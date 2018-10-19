@@ -13,54 +13,12 @@
               <th>Expenses</th>
             </tr></thead>
           <tbody>
+            {% for row in rows %}
             <tr>
-              <td data-label="Date">02-03-18</td>
-              <td data-label="Expenses">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+              <td data-label="Date">{{row[0]}}</td>
+              <td data-label="Expenses">{{row[1]}}</td>
             </tr>
-            <tr>
-              <td data-label="Date">01-10-18</td>
-              <td data-label="Expenses"> Phasellus tincidunt arcu a turpis suscipit ullamcorper.</td>
-            </tr>
-            <tr>
-              <td data-label="Date">31-09-18</td>
-              <td data-label="Expenses">Proin dignissim sodales odio, vel ullamcorper magna tempor ut. Nulla</td>
-            </tr>
-            <tr>
-              <td data-label="Date">02-03-18</td>
-              <td data-label="Expenses">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-            </tr>
-            <tr>
-              <td data-label="Date">02-03-18</td>
-              <td data-label="Expenses">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-            </tr>
-            <tr>
-              <td data-label="Date">02-03-18</td>
-              <td data-label="Expenses">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-            </tr>
-            <tr>
-              <td data-label="Date">02-03-18</td>
-              <td data-label="Expenses">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-            </tr>
-            <tr>
-              <td data-label="Date">02-03-18</td>
-              <td data-label="Expenses">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-            </tr>
-            <tr>
-              <td data-label="Date">02-03-18</td>
-              <td data-label="Expenses">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-            </tr>
-            <tr>
-              <td data-label="Date">02-03-18</td>
-              <td data-label="Expenses">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-            </tr>
-            <tr>
-              <td data-label="Date">02-03-18</td>
-              <td data-label="Expenses">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-            </tr>
-            <tr>
-              <td data-label="Date">02-03-18</td>
-              <td data-label="Expenses">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
   </div>

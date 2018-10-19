@@ -5,31 +5,26 @@
   <div class="ui main text container segment">
     <div class="ui huge header"> KudiTracker </div>
 
-    <form class="ui form" action="/expenses" method="POST">
+    {% from "includes/_formhelpers.html" import render_field %}
+
+    <form class="ui form" action="/" method="POST">
       <div class="field">
-        <label>Date</label>
-        <input type="date" name="expense_date" required></input>
+        {{render_field(form.expense_date)}}
       </div>
 
       <div class="field">
-        <label>Expense Description</label>
-        <input type="text" name="expense_descr" maxlength="68" required></input>
+        {{render_field(form.expense_descr)}}
       </div>
 
       <div class="field">
-        <label>Amount Spent</label>
-        <input type="text" name="expense_amt" required></input>
+        {{render_field(form.expense_amt)}}
       </div>
 
       <div class="field">
-        <label>Select Expense Category</label>
-        <select name="category" required>
-            <option value="business_cat">Business</option>
-            <option value="personal_cat">Personal</option>
-          </select>
+        {{render_field(form.expense_cat)}}
       </div>
 
-      <button class="ui secondary button">Submit</button>
+      <input type="submit" class="ui secondary button" value="Submit"></input>
 
     </form>
   </div>

@@ -9,22 +9,18 @@
       <p id="defined-descr">All Business Expenses</p>
         <table class="ui celled table">
           <thead>
-            <tr><th>Date</th>
+            <tr>
+              <th>Date</th>
               <th>Expenses</th>
-            </tr></thead>
+            </tr>
+          </thead>
           <tbody>
+            {% for row in rows %}
             <tr>
-              <td data-label="Date">02-06-18</td>
-              <td data-label="Expenses">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+              <td data-label="Date">{{row[0]}}</td>
+              <td data-label="Expenses">{{row[1]}}</td>
             </tr>
-            <tr>
-              <td data-label="Date">05-07-18</td>
-              <td data-label="Expenses"> Phasellus tincidunt arcu a turpis suscipit ullamcorper.</td>
-            </tr>
-            <tr>
-              <td data-label="Date">03-07-18</td>
-              <td data-label="Expenses">Proin dignissim sodales odio, vel ullamcorper magna tempor ut. Nulla</td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
   </div>
