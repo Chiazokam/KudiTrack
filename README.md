@@ -36,7 +36,7 @@ c. From your command line, set up a virtual environment in the root folder and a
   for how to set up a virtual environment.
 
 
-  Install the following in your virtual environment:
+Install the following in your virtual environment:
 	i. Flask (pip install flask)
 	ii. mysql-connector (pip install mysql-connector)
   iii. wtforms (pip install wtforms)
@@ -45,11 +45,11 @@ d. Move into the folder that was cloned
 
       i. cd into Flask_Maria and run the db_create.py file
 
-    > python db_create.py
+        > python db_create.py
 
       ii. Go back to the parent folder and run the main_app.py file
 
-    > python main_app.py
+        > python main_app.py
 
 e. On your browser, go to:
     http://localhost:5000/
