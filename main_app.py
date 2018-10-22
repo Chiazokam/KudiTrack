@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, flash, redirect, session, log
 from wtforms import Form, validators, StringField, TextAreaField, DateField, IntegerField, SelectField, SubmitField
 import mysql.connector as mariadb
 from datetime import datetime
+import pymysql  #Downloaded and imported
 
 app = Flask(__name__)
 
@@ -20,9 +21,11 @@ def date_format(date_string):
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = ExpenseForm(request.form)
+    #Triggered if form is filled and submitted
     if request.method == 'POST':
         expense_date = date_format(request.form['expense_date'])
-        expense_descr = request.form['expense_descr']
+        #Escape characters that may cause an error when inserted into the db e.g, apostrophe
+        expense_descr =  pymysql.escape_string(request.form['expense_descr'])
         expense_amt = request.form['expense_amt']
         expense_cat = request.form['expense_cat']
 
@@ -37,7 +40,8 @@ def home():
         db_conn.commit()
         #Close connection
         cursor.close()
-        redirect(url_for("home"))
+        return redirect(url_for("home"))    #Putting return, the form data was cleared from the form after submission
+    #Default page to render without the form filling
     return render_template("home.html", form=form)
 
 @app.route("/business")
