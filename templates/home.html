@@ -6,26 +6,26 @@
     <div class="ui huge header"> KudiTracker </div>
 
     {% from "includes/_formhelpers.html" import render_field %}
+    {% include "includes/_messages.html" %}
 
     <form class="ui form" action="/" method="POST">
-      <div class="field">
-        {{render_field(form.expense_date)}}
-      </div>
+        <div class="field">
+          {{render_field(form.expense_date)}}
+        </div>
 
-      <div class="field">
-        {{render_field(form.expense_descr)}}
-      </div>
+        <div class="field">
+          {{render_field(form.expense_descr)}}
+        </div>
 
-      <div class="field">
-        {{render_field(form.expense_amt)}}
-      </div>
+        <div class="field">
+          {{render_field(form.expense_amt)}}
+        </div>
 
-      <div class="field">
-        {{render_field(form.expense_cat)}}
-      </div>
+        <div class="field">
+          {{render_field(form.expense_cat)}}
+        </div>
 
-      <input type="submit" class="ui secondary button" value="Submit"></input>
-
+        <button class="ui secondary button" type="submit" onclick="return expenseNotification()">Submit</button>
     </form>
   </div>
 </div>

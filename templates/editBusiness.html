@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div id="defined-content">
+  <div class="ui main text container segment">
+    <div class="ui huge header"> KudiTracker </div>
+
+    {% from "includes/_formhelpers.html" import render_field %}
+    {% include "includes/_messages.html" %}
+
+    <form class="ui form" action="/business/{{ row[0] }}" method="POST">
+      <div class="field">
+        <label>Expense Date</label>
+        <input type="text" value="{{ row[1] }}" name="expense_date"></input>
+      </div>
+
+      <div class="field">
+        <label>Expense Description</label>
+        <input type="text" value="{{ row[2] }}" name="expense_descr"></input>
+      </div>
+
+      <div class="field">
+        <label>Expense Amount</label>
+        <input type="text" value="{{ row[3] }}" name="expense_amt"></input>
+      </div>
+
+      <div class="field">
+        <label>Expense Category</label>
+        <input type="text" value="{{ row[4] }}" name="expense_cat"></input>
+      </div>
+
+        <button class="ui secondary button" type="submit">Update</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
