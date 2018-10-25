@@ -1,4 +1,17 @@
-//document.getElementById("submit-btn").addEventListener('click', expenseNotification)
+
+$(document).ready(function(){
+$(expense_date).focusout(function(){
+	let dateInput = this.value;
+	//Use moment.js to validate date input
+	if (moment(dateInput, 'YYYY-MM-DD', true).format() == "Invalid date"){
+		this.value = '';
+		$(dateError).css('visibility', 'visible');
+	}
+	else {
+		$(dateError).css('visibility', 'hidden');
+	}
+});
+})
 
 function expenseNotification() {
 			var expense_date = document.getElementById("expense_date").value;
@@ -18,8 +31,8 @@ function expenseNotification() {
   					"expense_descr": expense_descr
   				}
   			}).done(function (data) {
-  				if (data.expense_amt != '') {
-						swal("Good job!", "Expense Added", "success", {
+  				if (data.expense_amt && data.expense_date && data.expense_descr && data.expense_cat) {
+						swal("Good job!", `Expense of ${data.expense_amt} Added`, "success", {
   					button: "Close",
 					});
   				}
@@ -31,5 +44,4 @@ function expenseNotification() {
   					});
   				}
   			})
-				console.log(data)
 		}
