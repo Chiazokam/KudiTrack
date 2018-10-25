@@ -16,8 +16,8 @@
   overflow: scroll;
 }
 
-#dateError{
-  color: red;
+#dateError, #amountError, #categoryError{
+  color: #e66767;
   visibility: hidden;
 }
 #footer-text{

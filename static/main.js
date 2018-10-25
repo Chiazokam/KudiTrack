@@ -1,16 +1,38 @@
 
 $(document).ready(function(){
-$(expense_date).focusout(function(){
-	let dateInput = this.value;
-	//Use moment.js to validate date input
-	if (moment(dateInput, 'YYYY-MM-DD', true).format() == "Invalid date"){
-		this.value = '';
-		$(dateError).css('visibility', 'visible');
-	}
-	else {
-		$(dateError).css('visibility', 'hidden');
-	}
-});
+
+	$(expense_date).focusout(function(){
+		let dateInput = this.value;
+		//Use moment.js to validate date input
+		if (moment(dateInput, 'YYYY-MM-DD', true).format() == "Invalid date"){
+			this.value = '';
+			$(dateError).css('visibility', 'visible');
+		}
+		else {
+			$(dateError).css('visibility', 'hidden');
+		}
+	});
+
+	$(expense_amt).focusout(function(){
+		if (this.value.indexOf(',') > -1 || this.value.indexOf('.') > -1){
+			this.value = '';
+			$(amountError).css('visibility', 'visible');
+		}
+		else {
+			$(amountError).css('visibility', 'hidden');
+		}
+	})
+
+	$(expense_cat).focusout(function(){
+		let categoryInput = this.value; //Wasn't working without defining it seperately
+		if (categoryInput == "personal" || categoryInput == "business"){
+			$(categoryError).css('visibility', 'hidden');
+		}
+		else if ( categoryInput != "personal" || categoryInput != "business") {
+			this.value = '';
+			$(categoryError).css('visibility', 'visible');
+		}
+	});
 })
 
 function expenseNotification() {

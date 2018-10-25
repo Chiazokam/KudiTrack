@@ -81,7 +81,7 @@ def business():
                               password='root',
                               database='kuditracker')
     cursor = db_conn.cursor()
-    cursor.execute("SELECT id, ExpenseDate, Description FROM expenses WHERE Category='Business'")
+    cursor.execute("SELECT id, ExpenseDate, Description FROM expenses WHERE Category='business'")
     #Fetch The Data from the Database(READ)
     rows = cursor.fetchall()
     return render_template("business.html", rows=rows)
@@ -93,7 +93,7 @@ def personal():
                               password='root',
                               database='kuditracker')
     cursor = db_conn.cursor()
-    cursor.execute("SELECT id, ExpenseDate, Description FROM expenses WHERE Category='Personal'")
+    cursor.execute("SELECT id, ExpenseDate, Description FROM expenses WHERE Category='personal'")
     #Fetch The Data from the Database(READ)
     rows = cursor.fetchall()
     return render_template("personal.html", rows=rows)
@@ -133,7 +133,6 @@ def editPersonal(id):
     cursor.execute(selectQuery, id)
     #Fetch The Data from the Database(READ)
     row = cursor.fetchone()
-    print(row)
     return render_template("editPersonal.html", row=row)
 
 @app.route("/business/<id>/edit")

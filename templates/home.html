@@ -10,7 +10,7 @@
 
     <form class="ui form" action="/" method="POST">
         <div class="field" id="dateField">
-          <span id="dateError">Wrong date input</span>
+          <span id="dateError"><i>Wrong date input</i></span>
           {{render_field(form.expense_date)}}
         </div>
 
@@ -19,10 +19,12 @@
         </div>
 
         <div class="field">
+          <span id="amountError"><i>Exclude commas and fullstops</i></span>
           {{render_field(form.expense_amt)}}
         </div>
 
         <div class="field">
+          <span id="categoryError"><i>Please put in the right category</i></span>
           {{render_field(form.expense_cat)}}
         </div>
 
