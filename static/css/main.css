@@ -15,16 +15,11 @@
   height: 85%;
   overflow: scroll;
 }
-/*
-#defined-form-container{
-  padding: 60px;
-}
 
-#defined-form{
-  width: 100%;
+#dateError{
+  color: red;
+  visibility: hidden;
 }
-*/
-
 #footer-text{
   margin-bottom: 0;
   padding-left: 36%;

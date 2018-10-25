@@ -17,7 +17,10 @@ def dbConnection():
 #Create function to change date to a date object
 def date_format(date_string):
     """Function to return date object"""
-    return datetime.strptime(date_string, "%Y-%m-%d").date()
+    try:
+        return datetime.strptime(date_string, "%Y-%m-%d").date()
+    except ValueError:
+        raise ValueError("Incorrect date format, should be in yyyy-mm-dd format")
 #==============================================================================
 #Define the Form class
 class ExpenseForm(Form):
@@ -55,15 +58,19 @@ def home():
 
 @app.route('/addExpense', methods=['GET', 'POST'])
 def addExpense():
-    #form = ExpenseForm(request.form)
+    expense_date = date_format(request.form['expense_date'])
+    expense_descr =  pymysql.escape_string(request.form['expense_descr'])
     expense_amt = pymysql.escape_string(request.form['expense_amt'])
+    expense_cat = request.form['expense_cat']
+
     #Capture query data using json
-    print(request.form, "request", request)
     body = {
         "status": "success",
-        "expense_amt": expense_amt
+        "expense_date": expense_date,
+        "expense_descr": expense_descr,
+        "expense_amt": expense_amt,
+        "expense_cat": expense_cat
         }
-    print(body)
     return jsonify(body)
 
 #SHOW BUSINESS
