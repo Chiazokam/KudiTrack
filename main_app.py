@@ -5,7 +5,6 @@ from datetime import datetime
 import pymysql  #Downloaded and imported
 
 app = Flask(__name__)
-
 #==============================================================================
 def dbConnection():
     """Function to connect to the DB"""
@@ -27,7 +26,7 @@ class ExpenseForm(Form):
     expense_date = DateField('Date: yyyy-mm-dd', [validators.DataRequired()])
     expense_descr = StringField('Description', [validators.length(max=20), validators.DataRequired()])
     expense_amt = IntegerField('Amount', [validators.DataRequired()])
-    expense_cat = StringField('Category: Business Or Personal', [validators.DataRequired()])
+    expense_cat = StringField('Category: business Or personal', [validators.DataRequired()])
 
 #ADD NEW EXPENSE
 @app.route('/', methods=['GET', 'POST'])
@@ -39,20 +38,21 @@ def home():
         #Escape characters that may cause an error when inserted into the db e.g, apostrophe
         expense_descr =  pymysql.escape_string(request.form['expense_descr'])
         expense_amt = pymysql.escape_string(request.form['expense_amt'])
-        expense_cat = request.form['expense_cat']
+        expense_cat = request.form['expense_cat'].lower()
 
-        #Connect to mariaDB
-        db_conn = mariadb.connect(user='root',
-                                  password='root',
-                                  database='kuditracker')
-        cursor = db_conn.cursor()
-        #Insert data into the db
-        query = "INSERT INTO expenses (ExpenseDate, Description, Amount, Category) VALUES ('{}', '{}', '{}', '{}')".format(expense_date, expense_descr, expense_amt, expense_cat)
-        cursor.execute(query)
-        db_conn.commit()
-        #Close connection
-        cursor.close()
-        return redirect(url_for("home"))    #Putting return, the form data was cleared from the form after submission
+        if expense_cat == 'personal' or expense_cat == 'business':
+            #Connect to mariaDB
+            db_conn = mariadb.connect(user='root',
+                                      password='root',
+                                      database='kuditracker')
+            cursor = db_conn.cursor()
+            #Insert data into the db
+            query = "INSERT INTO expenses (ExpenseDate, Description, Amount, Category) VALUES ('{}', '{}', '{}', '{}')".format(expense_date, expense_descr, expense_amt, expense_cat)
+            cursor.execute(query)
+            db_conn.commit()
+            #Close connection
+            cursor.close()
+            return redirect(url_for("home"))    #Putting return, the form data was cleared from the form after submission
     #Default page to render without the form filling
     return render_template("home.html", form=form)
 
@@ -81,7 +81,7 @@ def business():
                               password='root',
                               database='kuditracker')
     cursor = db_conn.cursor()
-    cursor.execute("SELECT id, ExpenseDate, Description FROM expenses WHERE Category='business'")
+    cursor.execute("SELECT id, ExpenseDate, Amount, Description FROM expenses WHERE Category='business'")
     #Fetch The Data from the Database(READ)
     rows = cursor.fetchall()
     return render_template("business.html", rows=rows)
@@ -93,7 +93,7 @@ def personal():
                               password='root',
                               database='kuditracker')
     cursor = db_conn.cursor()
-    cursor.execute("SELECT id, ExpenseDate, Description FROM expenses WHERE Category='personal'")
+    cursor.execute("SELECT id, ExpenseDate, Amount, Description FROM expenses WHERE Category='personal'")
     #Fetch The Data from the Database(READ)
     rows = cursor.fetchall()
     return render_template("personal.html", rows=rows)
@@ -158,7 +158,6 @@ def updatePersonal(id):
         expense_descr =  pymysql.escape_string(request.form['expense_descr'])
         expense_amt = pymysql.escape_string(request.form['expense_amt'])
         expense_cat = request.form['expense_cat']
-        print(request.form, "request", request)
         db_conn = mariadb.connect(user='root',
                                   password='root',
                                   database='kuditracker')

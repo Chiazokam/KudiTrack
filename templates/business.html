@@ -12,7 +12,8 @@
             <thead>
               <tr>
                 <th>Date</th>
-                <th>Expenses</th>
+                <th>Amount</th>
+                <th>Description</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -22,8 +23,9 @@
               <tr>
                 <td data-label="Date">{{ row[1] }}</td>
                 <td data-label="Expenses">{{ row[2] }}</td>
+                <td data-label="Expenses">{{ row[3] }}</td>
                 <td><a href="/business/{{row[0]}}/edit"><i class="edit icon"></i></a></td>
-                <td><a href="/business/{{row[0]}}"><i class="cut icon"></i></a></td>
+                <td><a href="/business/{{row[0]}}"><i class="trash alternate icon" id="trash"></i></a></td>
               </tr>
               {% endfor %}
             </tbody>

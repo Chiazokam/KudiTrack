@@ -6,6 +6,10 @@
   background-color: #b71540;
 }
 
+.defined-item:active{
+  background-color: #b71540;
+}
+
 #defined-descr{
   text-align: center;
 }

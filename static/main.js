@@ -18,13 +18,17 @@ $(document).ready(function(){
 			this.value = '';
 			$(amountError).css('visibility', 'visible');
 		}
+		else if (!Number.isInteger(Number(this.value))){
+			this.value = '';
+			$(amountError).css('visibility', 'visible');
+		}
 		else {
 			$(amountError).css('visibility', 'hidden');
 		}
 	})
 
 	$(expense_cat).focusout(function(){
-		let categoryInput = this.value; //Wasn't working without defining it seperately
+		let categoryInput = this.value.toLowerCase(); //Wasn't working without defining it seperately
 		if (categoryInput == "personal" || categoryInput == "business"){
 			$(categoryError).css('visibility', 'hidden');
 		}
@@ -33,37 +37,37 @@ $(document).ready(function(){
 			$(categoryError).css('visibility', 'visible');
 		}
 	});
-})
+	});
 
-function expenseNotification() {
-			var expense_date = document.getElementById("expense_date").value;
-			var expense_descr = document.getElementById("expense_descr").value;
-			var expense_amt = document.getElementById("expense_amt").value;
-			var expense_cat = document.getElementById("expense_cat").value;
+	function expenseNotification() {
+				var expense_date = document.getElementById("expense_date").value;
+				var expense_descr = document.getElementById("expense_descr").value;
+				var expense_amt = document.getElementById("expense_amt").value;
+				var expense_cat = document.getElementById("expense_cat").value;
 
-			$.ajax({
-  				url: "http://localhost:5000/addExpense",
-  				method: "POST",
-          crossDomain : true,
-          async: false,
-  				data: {
-  					"expense_date": expense_date,
-  					"expense_amt": expense_amt,
-  					"expense_cat": expense_cat,
-  					"expense_descr": expense_descr
-  				}
-  			}).done(function (data) {
-  				if (data.expense_amt && data.expense_date && data.expense_descr && data.expense_cat) {
-						swal("Good job!", `Expense of ${data.expense_amt} Added`, "success", {
-  					button: "Close",
-					});
-  				}
-  				if (!data) {
-  					swal({
-  						title: "Sorry",
-  						text: 'Your Expense has NOT been saved!',
-  						type: "error"
-  					});
-  				}
-  			})
-		}
+				$.ajax({
+	  				url: "http://localhost:5000/addExpense",
+	  				method: "POST",
+	          crossDomain : true,
+	          async: false,
+	  				data: {
+	  					"expense_date": expense_date,
+	  					"expense_amt": expense_amt,
+	  					"expense_cat": expense_cat,
+	  					"expense_descr": expense_descr
+	  				}
+	  			}).done(function (data) {
+	  				if (data.expense_amt && data.expense_date && data.expense_descr && data.expense_cat) {
+							swal("Good job!", `Expense of ${data.expense_amt} Added`, "success", {
+	  					button: "Close",
+						});
+	  				}
+	  				if (!data) {
+	  					swal({
+	  						title: "Sorry",
+	  						text: 'Your Expense has NOT been saved!',
+	  						type: "error"
+	  					});
+	  				}
+	  			})
+			}
