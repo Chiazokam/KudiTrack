@@ -1,4 +1,6 @@
 # KudiTracker
+
+[![Build Status](https://travis-ci.org/Chiazokam/KudiTracker.svg?branch=master)](https://travis-ci.org/Chiazokam/KudiTracker)
 
 ### Link to trello project: https://trello.com/b/WJZERcNZ/kuditracker-project
 KudiTracker is an expense tracker that helps the user to keep track of his daily expenses.
