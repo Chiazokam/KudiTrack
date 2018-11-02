@@ -21,11 +21,11 @@
             <tbody>
               {% for row in rows %}
               <tr>
-                <td data-label="Date">{{ row[1] }}</td>
-                <td data-label="Expenses">{{ row[2] }}</td>
-                <td data-label="Expenses">{{ row[3] }}</td>
-                <td><a href="/business/{{row[0]}}/edit"><i class="edit icon"></i></a></td>
-                <td><a href="/business/{{row[0]}}"><i class="trash alternate icon" id="trash"></i></a></td>
+                <td data-label="Date">{{ row['ExpenseDate'] }}</td>
+                <td data-label="Expenses">{{ row['Amount'] }}</td>
+                <td data-label="Expenses">{{ row['Description'] }}</td>
+                <td><a href="/business/{{row['id']}}/edit"><i class="edit icon"></i></a></td>
+                <td><a href="/business/{{row['id']}}"><i class="trash alternate icon" id="trash"></i></a></td>
               </tr>
               {% endfor %}
             </tbody>

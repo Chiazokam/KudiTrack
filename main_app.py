@@ -3,15 +3,17 @@ from wtforms import Form, validators, StringField, TextAreaField, DateField, Int
 import mysql.connector as mariadb
 from datetime import datetime
 import pymysql  #Downloaded and imported
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 #==============================================================================
-def dbConnection():
-    """Function to connect to the DB"""
-    db_conn = mariadb.connect(user='root',
-                              password='root',
-                              database='kuditracker')
-    cursor = db_conn.cursor()
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_DB'] = 'kuditracker'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
+mysql = MySQL(app)
 #==============================================================================
 #Create function to change date to a date object
 def date_format(date_string):
@@ -41,15 +43,12 @@ def home():
         expense_cat = request.form['expense_cat'].lower()
 
         if expense_cat == 'personal' or expense_cat == 'business':
-            #Connect to mariaDB
-            db_conn = mariadb.connect(user='root',
-                                      password='root',
-                                      database='kuditracker')
-            cursor = db_conn.cursor()
+            #Create Cursor
+            cursor = mysql.connection.cursor()
             #Insert data into the db
             query = "INSERT INTO expenses (ExpenseDate, Description, Amount, Category) VALUES ('{}', '{}', '{}', '{}')".format(expense_date, expense_descr, expense_amt, expense_cat)
             cursor.execute(query)
-            db_conn.commit()
+            mysql.connection.commit()
             #Close connection
             cursor.close()
             return redirect(url_for("home"))    #Putting return, the form data was cleared from the form after submission
@@ -76,11 +75,8 @@ def addExpense():
 #SHOW BUSINESS
 @app.route("/business")
 def business():
-    #Connect to mariaDB
-    db_conn = mariadb.connect(user='root',
-                              password='root',
-                              database='kuditracker')
-    cursor = db_conn.cursor()
+    #Create Cursor
+    cursor = mysql.connection.cursor()
     cursor.execute("SELECT id, ExpenseDate, Amount, Description FROM expenses WHERE Category='business'")
     #Fetch The Data from the Database(READ)
     rows = cursor.fetchall()
@@ -88,11 +84,8 @@ def business():
 
 @app.route("/personal")
 def personal():
-    #Connect to mariaDB
-    db_conn = mariadb.connect(user='root',
-                              password='root',
-                              database='kuditracker')
-    cursor = db_conn.cursor()
+    #Create Cursor
+    cursor = mysql.connection.cursor()
     cursor.execute("SELECT id, ExpenseDate, Amount, Description FROM expenses WHERE Category='personal'")
     #Fetch The Data from the Database(READ)
     rows = cursor.fetchall()
@@ -100,34 +93,28 @@ def personal():
 
 @app.route("/personal/<id>")
 def deletePersonal(id):
-    db_conn = mariadb.connect(user='root',
-                              password='root',
-                              database='kuditracker')
-    cursor = db_conn.cursor()
+    #Create Cursor
+    cursor = mysql.connection.cursor()
     deleteQuery = "DELETE FROM expenses WHERE id = %s"
     id = (id, )
     cursor.execute(deleteQuery, id)
-    db_conn.commit()
+    mysql.connection.commit()
     return redirect(url_for("personal"))
 
 @app.route("/business/<id>")
 def deleteBusiness(id):
-    db_conn = mariadb.connect(user='root',
-                              password='root',
-                              database='kuditracker')
-    cursor = db_conn.cursor()
+    #Create Cursor
+    cursor = mysql.connection.cursor()
     deleteQuery = "DELETE FROM expenses WHERE id = %s"
     id = (id, )
     cursor.execute(deleteQuery, id)
-    db_conn.commit()
+    mysql.connection.commit()
     return redirect(url_for("business"))
 
 @app.route("/personal/<id>/edit")
 def editPersonal(id):
-    db_conn = mariadb.connect(user='root',
-                              password='root',
-                              database='kuditracker')
-    cursor = db_conn.cursor()
+    #Create Cursor
+    cursor = mysql.connection.cursor()
     selectQuery = "SELECT * FROM expenses WHERE id = %s"
     id = (id, )
     cursor.execute(selectQuery, id)
@@ -137,10 +124,8 @@ def editPersonal(id):
 
 @app.route("/business/<id>/edit")
 def editBusiness(id):
-    db_conn = mariadb.connect(user='root',
-                              password='root',
-                              database='kuditracker')
-    cursor = db_conn.cursor()
+    #Create Cursor
+    cursor = mysql.connection.cursor()
     selectQuery = "SELECT * FROM expenses WHERE id = %s"
     id = (id, )
     cursor.execute(selectQuery, id)
@@ -158,14 +143,12 @@ def updatePersonal(id):
         expense_descr =  pymysql.escape_string(request.form['expense_descr'])
         expense_amt = pymysql.escape_string(request.form['expense_amt'])
         expense_cat = request.form['expense_cat']
-        db_conn = mariadb.connect(user='root',
-                                  password='root',
-                                  database='kuditracker')
-        cursor = db_conn.cursor()
+        #Create Cursor
+        cursor = mysql.connection.cursor()
         #Update row in db
         updateQuery = "UPDATE expenses SET ExpenseDate='%s', Description='%s', Amount='%s', Category='%s' WHERE id='%s'" % (expense_date, expense_descr, expense_amt, expense_cat, id)
         cursor.execute(updateQuery)
-        db_conn.commit()
+        mysql.connection.commit()
         #Close connection
         cursor.close()
         return redirect(url_for("personal"))
@@ -180,15 +163,12 @@ def updateBusiness(id):
         expense_descr =  pymysql.escape_string(request.form['expense_descr'])
         expense_amt = pymysql.escape_string(request.form['expense_amt'])
         expense_cat = request.form['expense_cat']
-        print(request.form, "request", request)
-        db_conn = mariadb.connect(user='root',
-                                  password='root',
-                                  database='kuditracker')
-        cursor = db_conn.cursor()
+        #Create Cursor
+        cursor = mysql.connection.cursor()
         #Update row in db
         updateQuery = "UPDATE expenses SET ExpenseDate='%s', Description='%s', Amount='%s', Category='%s' WHERE id='%s'" % (expense_date, expense_descr, expense_amt, expense_cat, id)
         cursor.execute(updateQuery)
-        db_conn.commit()
+        mysql.connection.commit()
         #Close connection
         cursor.close()
         return redirect(url_for("business"))
