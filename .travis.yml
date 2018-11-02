@@ -1,4 +1,8 @@
 language: python
-install: 
--	“pip install –r requirements.txt –e .[‘testing’]”
-script: unittest
+python:
+  - "3.6"
+cache: pip
+install:
+  - pip install -r requirements.txt
+script:
+  - python tests.py
